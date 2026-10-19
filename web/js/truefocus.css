@@ -1,0 +1,9 @@
+.focus-container{position:relative}
+.focus-word{transition:filter .3s ease}
+.focus-word.blur{filter:blur(var(--blur-amount,3px))}
+.focus-frame{position:absolute;top:0;left:0;pointer-events:none;box-sizing:content-box;border:none}
+.corner{position:absolute;width:.8rem;height:.8rem;border:3px solid var(--border-color,#3b82f6);filter:drop-shadow(0 0 4px var(--border-color,#3b82f6));border-radius:3px}
+.top-left{top:-10px;left:-10px;border-right:none;border-bottom:none}
+.top-right{top:-10px;right:-10px;border-left:none;border-bottom:none}
+.bottom-left{bottom:-10px;left:-10px;border-right:none;border-top:none}
+.bottom-right{bottom:-10px;right:-10px;border-left:none;border-top:none}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deteksi | IsyaraTalk</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="js/Image/logoisyara.png">
+<style>
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+.animate-fade-in{animation:fadeIn .6s ease both}
+.animate-slide-up{animation:slideUp .6s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(12px);opacity:.0}to{transform:translateY(0);opacity:1}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-200">
+<header class="border-b border-slate-700 bg-slate-900/80 backdrop-blur fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a class="flex items-center gap-3" href="index.html"><img src="js/Image/logoisyara.png" alt="IsyaraTalk" class="w-8 h-8 rounded object-contain" /><span class="text-xl font-semibold text-white">IsyaraTalk</span></a>
+    <nav class="hidden md:flex items-center gap-2">
+      <a href="index.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Beranda</a>
+      <a href="materi.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Materi</a>
+      <a href="detection.html" class="cursor-target px-3 py-2 rounded-lg bg-slate-800 text-blue-400">Deteksi</a>
+      <a href="latihan.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Latihan</a>
+      <a href="about.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main class="mt-20 max-w-6xl mx-auto px-4 py-8 animate-fade-in">
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold text-white mb-4">Deteksi Bahasa Isyarat Real-Time</h1>
+    <p class="text-slate-400 max-w-2xl mx-auto">Gunakan kamera Anda untuk mendeteksi huruf bahasa isyarat SIBI secara langsung menggunakan teknologi AI.</p>
+  </div>
+
+  <div class="grid lg:grid-cols-3 gap-8 items-start">
+    <div class="lg:col-span-2">
+      <div class="relative bg-slate-800 rounded-2xl shadow-lg overflow-hidden border border-slate-700 aspect-video">
+        <video id="video" class="w-full h-full object-cover transform scale-x-[-1]" autoplay playsinline></video>
+        <canvas id="canvas" class="absolute inset-0 pointer-events-none transform scale-x-[-1]"></canvas>
+        <div id="loading" class="absolute inset-0 flex items-center justify-center bg-slate-900/80 z-20">
+          <div class="text-center">
+            <div class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-white font-medium">Memuat Model AI...</p>
+          </div>
+        </div>
+        <div class="absolute bottom-4 left-4 right-4 flex justify-center gap-4 z-10">
+            <button id="startBtn" class="cursor-target bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-full font-medium shadow-lg transition flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Mulai Kamera
+            </button>
+            <button id="stopBtn" class="cursor-target bg-red-600 hover:bg-red-500 text-white px-6 py-2 rounded-full font-medium shadow-lg transition flex items-center gap-2 hidden">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path></svg>
+                Stop Kamera
+            </button>
+        </div>
+      </div>
+      <div class="mt-4 p-4 bg-yellow-900/30 border border-yellow-700/50 rounded-xl flex items-start gap-3">
+        <svg class="w-6 h-6 text-yellow-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <p class="text-sm text-yellow-200">Pastikan pencahayaan cukup terang dan tangan Anda terlihat jelas di kamera. Posisikan tangan di tengah frame untuk hasil terbaik.</p>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div class="bg-slate-800 rounded-2xl shadow-sm border border-slate-700 p-6">
+        <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Hasil Deteksi
+        </h3>
+        <div class="text-center py-8">
+            <div id="prediction" class="text-8xl font-bold text-blue-500 mb-2">-</div>
+            <p class="text-slate-400">Confidence: <span id="confidence" class="font-semibold text-white">0%</span></p>
+            <div class="w-full max-w-[200px] mx-auto h-2 bg-slate-700 rounded-full mt-2 overflow-hidden">
+                <div id="confBar" class="h-full bg-blue-500 transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 rounded-2xl shadow-sm border border-slate-700 p-6">
+        <h3 class="text-lg font-semibold text-white mb-4">Instruksi</h3>
+        <ul class="space-y-3 text-slate-300 text-sm">
+            <li class="flex items-start gap-2">
+                <span class="bg-blue-900 text-blue-300 w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">1</span>
+                Izinkan akses kamera browser
+            </li>
+            <li class="flex items-start gap-2">
+                <span class="bg-blue-900 text-blue-300 w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">2</span>
+                Tunggu model AI selesai dimuat
+            </li>
+            <li class="flex items-start gap-2">
+                <span class="bg-blue-900 text-blue-300 w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">3</span>
+                Klik tombol "Mulai Kamera"
+            </li>
+            <li class="flex items-start gap-2">
+                <span class="bg-blue-900 text-blue-300 w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">4</span>
+                Arahkan tangan ke kamera sesuai huruf
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-slate-800 border-t border-slate-700">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div>
+        <div class="flex items-center gap-2">
+          <img src="js/Image/logoisyara.png" alt="IsyaraTalk" class="w-6 h-6 rounded object-contain" />
+          <span class="font-semibold text-white">IsyaraTalk</span>
+        </div>
+        <p class="mt-2 text-slate-400">Media pembelajaran bahasa isyarat yang dirancang untuk membantu siapa saja memahami dan berkomunikasi menggunakan bahasa isyarat.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Menu</h4>
+        <ul class="mt-2 space-y-1 text-slate-400">
+          <li><a href="materi.html" class="hover:text-blue-400">Materi Pembelajaran</a></li>
+          <li><a href="detection.html" class="hover:text-blue-400">Deteksi Real-Time</a></li>
+          <li><a href="latihan.html" class="hover:text-blue-400">Mode Latihan</a></li>
+          <li><a href="about.html" class="hover:text-blue-400">Tentang Kami</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Teknologi</h4>
+        <ul class="mt-2 space-y-1 text-slate-400">
+          <li>✓ Deteksi Real-Time dengan AI</li>
+          <li>✓ Model YOLOv8</li>
+          <li>✓ SIBI</li>
+          <li>✓ Pembelajaran Interaktif</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-slate-400">© 2025 IsyaraTalk</div>
+  </div>
+</footer>
+
+<script type="module" src="js/detection.js"></script>
+</body>
+</html>

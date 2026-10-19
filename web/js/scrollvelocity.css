@@ -1,0 +1,6 @@
+.parallax{position:relative;overflow:hidden;padding-inline:clamp(12px,4vw,40px);padding-block:clamp(6px,1.2vw,12px);-webkit-mask-image:linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);mask-image:linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%)}
+.scroller{display:flex;white-space:nowrap;text-align:center;font-size:clamp(.95rem,3.5vw,2rem);line-height:1.25em;font-weight:800;letter-spacing:-0.02em;gap:clamp(.75rem,2.5vw,1.75rem);will-change:transform}
+.scroller .scroll-text{flex-shrink:0;color:var(--scroll-color,#0f172a);padding-inline:.25em}
+.scroller .scroll-text::after{content:" • ";color:var(--bullet-color,#60a5fa);margin-left:.75rem}
+.scroller .scroll-text:nth-child(odd){color:var(--scroll-alt-color,#1e3a8a)}
+@media (min-width:768px){.scroller{font-size:clamp(1.25rem,3vw,2rem);line-height:1.25em}}

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.env*
+node_modules/
+# local datasets and exported models
+training/dataset/
+training/runs/
+web/js/model_tfjs/
+*.onnx

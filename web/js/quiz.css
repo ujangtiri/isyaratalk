@@ -1,0 +1,119 @@
+
+/* Duolingo-like specific styles - DARK MODE */
+.shadow-b-blue {
+    box-shadow: 0 4px 0 0 #2563eb; /* blue-600 */
+}
+.shadow-b-green {
+    box-shadow: 0 4px 0 0 #16a34a; /* green-600 */
+}
+.shadow-b-red {
+    box-shadow: 0 4px 0 0 #dc2626; /* red-600 */
+}
+.shadow-b-gray {
+    box-shadow: 0 4px 0 0 #475569; /* slate-600 */
+}
+
+/* Option Button Styles */
+.option-btn {
+    transition: all 0.2s;
+    border: 2px solid #334155; /* slate-700 */
+    box-shadow: 0 2px 0 0 #334155;
+}
+.option-btn:hover {
+    background-color: #1e293b; /* slate-800 */
+    transform: translateY(-1px);
+}
+.option-btn:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+.option-btn.selected {
+    border-color: #3b82f6; /* blue-500 */
+    background-color: #172554; /* blue-950 */
+    color: #60a5fa; /* blue-400 */
+    box-shadow: 0 2px 0 0 #3b82f6;
+}
+.option-btn.correct {
+    border-color: #22c55e; /* green-500 */
+    background-color: #064e3b; /* green-900 */
+    color: #4ade80; /* green-400 */
+    box-shadow: 0 2px 0 0 #22c55e;
+}
+.option-btn.wrong {
+    border-color: #ef4444; /* red-500 */
+    background-color: #7f1d1d; /* red-900 */
+    color: #f87171; /* red-400 */
+    box-shadow: 0 2px 0 0 #ef4444;
+}
+
+/* Level Card */
+.level-card {
+    transition: all 0.2s;
+    border: 2px solid #334155; /* slate-700 */
+    box-shadow: 0 4px 0 0 #334155;
+}
+.level-card:hover {
+    transform: translateY(-2px);
+    border-color: #3b82f6;
+    box-shadow: 0 4px 0 0 #3b82f6;
+}
+.level-card:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+/* Animations */
+.highlight-shine {
+    animation: shine 2s infinite linear;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: skewX(-20deg);
+}
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+.shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* Camera Frame */
+.camera-frame {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #000;
+    border: 4px solid #3b82f6;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+.camera-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}

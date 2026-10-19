@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IsyaraTalk</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="js/Image/logoisyara.png">
+  <link rel="stylesheet" href="js/scrollreveal.css">
+  <link rel="stylesheet" href="js/truefocus.css">
+  <link rel="stylesheet" href="js/scrollvelocity.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<style>
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+.animate-fade-in{animation:fadeIn .8s ease both}
+.animate-slide-up{animation:slideUp .8s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.tt-cursor{margin-left:.25rem;display:inline-block;animation:blink .8s infinite}
+@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
+.feature-card{transition:all 0.3s ease;border:1px solid #334155}
+.feature-card:hover{transform:translateY(-8px);box-shadow:0 20px 25px -5px rgba(0,0,0,0.3),0 10px 10px -5px rgba(0,0,0,0.2);border-color:#3b82f6}
+.gradient-text{background:linear-gradient(135deg,#60a5fa 0%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:#60a5fa}
+.cta-button{transition:all 0.3s ease;box-shadow:0 4px 6px -1px rgba(59,130,246,0.3)}
+.cta-button:hover{transform:translateY(-2px);box-shadow:0 10px 15px -3px rgba(59,130,246,0.4)}
+#typed{text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.hero-subtitle{text-shadow:0 1px 6px rgba(0,0,0,0.5)}
+.hero-title{-webkit-text-stroke:1px rgba(255,255,255,0.1);text-shadow:0 6px 22px rgba(0,0,0,0.5),0 3px 10px rgba(0,0,0,0.5)}
+</style>
+</head>
+<body class="bg-slate-900 text-slate-200">
+<header class="border-b border-slate-700 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a class="flex items-center gap-3" href="index.html"><img src="js/Image/logoisyara.png" alt="IsyaraTalk" class="w-8 h-8 rounded object-contain" /><span class="text-xl font-semibold text-white">IsyaraTalk</span></a>
+    <nav class="hidden md:flex items-center gap-2">
+      <a href="index.html" class="cursor-target px-3 py-2 rounded-lg bg-slate-800 text-blue-400">Beranda</a>
+      <a href="materi.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Materi</a>
+      <a href="detection.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Deteksi</a>
+      <a href="latihan.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Latihan</a>
+      <a href="about.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main class="mt-0">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden max-w-8xl mx-auto px-4 pt-24 pb-20 text-center animate-fade-in min-h-[550px] md:min-h-[680px]">
+    <video class="absolute inset-0 -z-10 w-full h-full object-cover opacity-40" autoplay muted loop playsinline poster="js/Image/bgisyara.png">
+      <source src="js/Image/bluebg.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-900/40"></div>
+    <div class="mx-auto w-24 h-24 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center shadow-lg">
+      <img src="js/Image/logoisyara.png" alt="IsyaraTalk" class="w-14 h-14 object-contain" />
+    </div>
+    <h1 class="mt-8 text-5xl md:text-7xl font-extrabold tracking-tight text-white">
+      <span id="typed" class="gradient-text hero-title"></span><span id="typedCursor" class="tt-cursor text-blue-400">|</span>
+    </h1>
+    <p class="mt-6 text-xl text-slate-300 hero-subtitle max-w-3xl mx-auto" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="6">Media pembelajaran bahasa isyarat untuk memahami dan berkomunikasi dengan cara yang mudah, jelas, dan interaktif</p>
+    <div id="focusButtons" class="mt-10 flex items-center justify-center gap-4 animate-slide-up focus-container" data-border-color="#3b82f6" data-blur-amount="3" data-duration="0.6" data-pause="1.0">
+      <a href="materi.html" class="cursor-target focus-word cta-button px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-500 border border-blue-500">Mulai Pembelajaran</a>
+      <a href="detection.html" class="cursor-target focus-word px-6 py-3 rounded-full border-2 border-slate-600 text-slate-200 font-semibold bg-slate-800 hover:bg-slate-700 transition">Coba Deteksi Sekarang</a>
+      <div class="focus-frame">
+        <span class="corner top-left"></span>
+        <span class="corner top-right"></span>
+        <span class="corner bottom-left"></span>
+        <span class="corner bottom-right"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div class="parallax">
+      <div class="scroller" id="scrollRow1" data-velocity="100">
+        <span class="scroll-text">Mudah Digunakan</span>
+        <span class="scroll-text">Interface yang intuitif dan user-friendly</span>
+        <span class="scroll-text">Gratis Selamanya</span>
+        <span class="scroll-text">Akses penuh tanpa biaya berlangganan</span>
+        <span class="scroll-text">Akses Kapan Saja</span>
+        <span class="scroll-text">Belajar di mana saja, kapan saja</span>
+        <span class="scroll-text">Deteksi Real-Time</span>
+        <span class="scroll-text">Mode Latihan</span>
+        <span class="scroll-text">Materi Lengkap</span>
+        <span class="scroll-text">Teknologi YOLOv8</span>
+        <span class="scroll-text">Fleksibilitas Belajar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="3" data-blur-strength="8">Fitur Unggulan</h2>
+      <p class="text-lg text-slate-600 mt-3" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="6">Belajar bahasa isyarat dengan teknologi AI terkini</p>
+    </div>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="feature-card p-6 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="w-14 h-14 rounded-xl bg-slate-700 flex items-center justify-center shadow-inner">
+          <span class="text-3xl">🎥</span>
+        </div>
+        <h3 class="mt-4 text-xl font-semibold text-white">Deteksi Real-Time</h3>
+        <p class="text-slate-400 mt-2" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Deteksi isyarat menggunakan webcam dan model YOLOv8 dengan akurasi tinggi</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="w-14 h-14 rounded-xl bg-slate-700 flex items-center justify-center shadow-inner">
+          <span class="text-3xl">📘</span>
+        </div>
+        <h3 class="mt-4 text-xl font-semibold text-white">Materi Lengkap</h3>
+        <p class="text-slate-400 mt-2" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Pelajari 26 huruf SIBI dengan gambar ilustrasi yang jelas</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="w-14 h-14 rounded-xl bg-slate-700 flex items-center justify-center shadow-inner">
+          <span class="text-3xl">🎯</span>
+        </div>
+        <h3 class="mt-4 text-xl font-semibold text-white">Mode Latihan</h3>
+        <p class="text-slate-400 mt-2" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Latih kemampuan dengan feedback real-time dan tracking progress</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="w-14 h-14 rounded-xl bg-slate-700 flex items-center justify-center shadow-inner">
+          <span class="text-3xl">🧠</span>
+        </div>
+        <h3 class="mt-4 text-xl font-semibold text-white">Teknologi YOLOv8</h3>
+        <p class="text-slate-400 mt-2" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Menggunakan arsitektur YOLOv8 untuk pengenalan pola yang cepat dan akurat</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="w-14 h-14 rounded-xl bg-slate-700 flex items-center justify-center shadow-inner">
+          <span class="text-3xl">💬</span>
+        </div>
+        <h3 class="mt-4 text-xl font-semibold text-white">Pembelajaran Interaktif</h3>
+        <p class="text-slate-400 mt-2" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Pengalaman belajar yang menyenangkan dan mudah dipahami</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="w-14 h-14 rounded-xl bg-slate-700 flex items-center justify-center shadow-inner">
+          <span class="text-3xl">📈</span>
+        </div>
+        <h3 class="mt-4 text-xl font-semibold text-white">Tracking Progress</h3>
+        <p class="text-slate-400 mt-2" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Pantau perkembangan dan pencapaian latihan Anda</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div class="p-8 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="text-5xl font-bold text-blue-500" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="3" data-blur-strength="8">26+</div>
+        <p class="mt-2 text-slate-400 font-medium" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Huruf Bahasa Isyarat</p>
+      </div>
+      <div class="p-8 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="text-5xl font-bold text-blue-500" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="3" data-blur-strength="8">2</div>
+        <p class="mt-2 text-slate-400 font-medium" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Sistem (SIBI)</p>
+      </div>
+      <div class="p-8 rounded-2xl bg-slate-800 border border-slate-700 shadow-sm">
+        <div class="text-5xl font-bold text-blue-500" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="3" data-blur-strength="8">AI</div>
+        <p class="mt-2 text-slate-400 font-medium" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="5">Teknologi Deteksi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-blue-900 text-white border-t border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-20 text-center">
+      <h3 class="text-4xl md:text-5xl font-bold" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="3" data-blur-strength="8">Siap Memulai Perjalanan Belajar Anda?</h3>
+      <p class="mt-4 text-xl text-blue-200" data-scroll-reveal data-enable-blur="true" data-base-opacity="0" data-base-rotation="2" data-blur-strength="6">Mulai belajar bahasa isyarat sekarang juga dengan IsyaraTalk</p>
+      <a href="materi.html" class="cursor-target mt-8 inline-block px-8 py-4 rounded-full bg-slate-900 text-white font-semibold text-lg hover:bg-slate-800 transition shadow-lg border border-slate-700">Mulai Sekarang</a>
+      
+      <div class="mt-16 grid md:grid-cols-3 gap-8 text-left">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg">Mudah Digunakan</h4>
+            <p class="text-blue-200 mt-1">Interface yang intuitif dan user-friendly</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg">Gratis Selamanya</h4>
+            <p class="text-blue-200 mt-1">Akses penuh tanpa biaya berlangganan</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg">Akses Kapan Saja</h4>
+            <p class="text-blue-200 mt-1">Belajar di mana saja, kapan saja dari perangkat Anda</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-slate-800 border-t border-slate-700">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div>
+        <div class="flex items-center gap-2">
+          <img src="js/Image/logoisyara.png" alt="IsyaraTalk" class="w-6 h-6 rounded object-contain" />
+          <span class="font-semibold text-white">IsyaraTalk</span>
+        </div>
+        <p class="mt-2 text-slate-400">Media pembelajaran bahasa isyarat yang dirancang untuk membantu siapa saja memahami dan berkomunikasi menggunakan bahasa isyarat.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Menu</h4>
+        <ul class="mt-2 space-y-1 text-slate-400">
+          <li><a href="materi.html" class="hover:text-blue-400">Materi Pembelajaran</a></li>
+          <li><a href="detection.html" class="hover:text-blue-400">Deteksi Real-Time</a></li>
+          <li><a href="latihan.html" class="hover:text-blue-400">Mode Latihan</a></li>
+          <li><a href="about.html" class="hover:text-blue-400">Tentang Kami</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Teknologi</h4>
+        <ul class="mt-2 space-y-1 text-slate-400">
+          <li>✓ Deteksi Real-Time dengan AI</li>
+          <li>✓ Model YOLOv8</li>
+          <li>✓ SIBI</li>
+          <li>✓ Pembelajaran Interaktif</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-slate-400">© 2025 IsyaraTalk</div>
+  </div>
+</footer>
+
+  <!-- Load Scripts -->
+  <script type="module" src="js/texttype.js"></script>
+  <script type="module" src="js/truefocus.js"></script>
+  <script type="module" src="js/scrollvelocity.js"></script>
+  <script type="module" src="js/scrollreveal.js"></script>
+</body>
+</html>

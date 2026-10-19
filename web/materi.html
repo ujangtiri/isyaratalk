@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Materi | IsyaraTalk</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="js/Image/logoisyara.png">
+<style>
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+.animate-fade-in{animation:fadeIn .6s ease both}
+.animate-slide-up{animation:slideUp .6s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(12px);opacity:.0}to{transform:translateY(0);opacity:1}}
+</style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen flex flex-col">
+<header class="border-b border-slate-700 bg-slate-900/80 backdrop-blur fixed top-0 inset-x-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a class="flex items-center gap-3" href="index.html"><img src="js/Image/logoisyara.png" alt="IsyaraTalk" class="w-8 h-8 rounded object-contain" /><span class="text-xl font-semibold text-white">IsyaraTalk</span></a>
+    <nav class="hidden md:flex items-center gap-2">
+      <a href="index.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Beranda</a>
+      <a href="materi.html" class="cursor-target px-3 py-2 rounded-lg bg-slate-800 text-blue-400">Materi</a>
+      <a href="detection.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Deteksi</a>
+      <a href="latihan.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Latihan</a>
+      <a href="about.html" class="cursor-target px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition">Tentang</a>
+    </nav>
+  </div>
+</header>
+
+<main class="mt-20 max-w-6xl mx-auto px-4 py-8 animate-fade-in">
+  <div class="mb-10 text-center">
+    <h1 class="text-3xl font-bold text-white mb-4">Materi Bahasa Isyarat</h1>
+    <p class="text-slate-400 max-w-2xl mx-auto">Pelajari huruf-huruf bahasa isyarat SIBI dengan mudah melalui kartu visual di bawah ini.</p>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center">
+    <div class="relative w-full md:w-96">
+      <input type="text" id="searchInput" placeholder="Cari huruf (A-Z)..." class="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-700 bg-slate-800 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-slate-500">
+      <svg class="w-5 h-5 text-slate-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+    </div>
+    <div class="flex gap-2">
+      <button id="filterAll" class="cursor-target px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition border border-blue-600">Semua</button>
+      <button id="filterSIBI" class="cursor-target px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white transition">SIBI</button>
+    </div>
+  </div>
+  <div id="cards" class="mt-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+</main>
+
+<footer class="bg-slate-800 border-t border-slate-700 mt-auto">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div>
+        <div class="flex items-center gap-2">
+          <img src="js/Image/logoisyara.png" alt="IsyaraTalk" class="w-6 h-6 rounded object-contain" />
+          <span class="font-semibold text-white">IsyaraTalk</span>
+        </div>
+        <p class="mt-2 text-slate-400">Media pembelajaran bahasa isyarat yang dirancang untuk membantu siapa saja memahami dan berkomunikasi menggunakan bahasa isyarat.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Menu</h4>
+        <ul class="mt-2 space-y-1 text-slate-400">
+          <li><a href="materi.html" class="hover:text-blue-400">Materi Pembelajaran</a></li>
+          <li><a href="detection.html" class="hover:text-blue-400">Deteksi Real-Time</a></li>
+          <li><a href="latihan.html" class="hover:text-blue-400">Mode Latihan</a></li>
+          <li><a href="about.html" class="hover:text-blue-400">Tentang Kami</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Teknologi</h4>
+        <ul class="mt-2 space-y-1 text-slate-400">
+          <li>✓ Deteksi Real-Time dengan AI</li>
+          <li>✓ Model YOLOv8</li>
+          <li>✓ SIBI</li>
+          <li>✓ Pembelajaran Interaktif</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-slate-400">© 2025 IsyaraTalk</div>
+  </div>
+</footer>
+
+<script type="module" src="js/materi.js"></script>
+</body>
+</html>
